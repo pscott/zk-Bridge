@@ -29,27 +29,21 @@ func hub_address() -> (address: felt) {
 func nonce_store() -> (res: felt) {
 }
 
-
 @constructor
 func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(hub: felt) {
     hub_address.write(hub);
     return ();
 }
 
-func send_eth{syscall_ptr: felt*, range_check_ptr}(amount: Uint256) {
+func send_eth{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(amount: Uint256) {
     let (hub) = hub_address.read();
-    let (nonce) = nonce_store.read();
-
-    // Increment nonce
-    nonce_store.write(nonce + 1);
 
     let calldata: felt* = alloc();
 
     assert calldata[0] = hub;
-    assert caldata[1] = nonce;
     assert calldata[2] = amount.low;
     assert calldata[3] = amount.high;
-    let calldata_size = 4;
+    let calldata_size = 3;
 
     call_contract(
         contract_address=STARKGATE_BRIDGE,
@@ -64,6 +58,10 @@ func send_message{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_pt
     amount: Uint256, to_address: felt, l1_failsafe_address: felt
 ) -> () {
     let (l1_destination_address) = hub_address.read();
+    let (nonce) = nonce_store.read();
+
+    // Increment nonce
+    nonce_store.write(nonce + 1);
 
     let (message_payload: felt*) = alloc();
 
@@ -71,7 +69,8 @@ func send_message{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_pt
     assert message_payload[1] = amount.high;
     assert message_payload[2] = to_address;
     assert message_payload[3] = l1_failsafe_address;
-    let payload_size = 4;
+    assert message_payload[4] = nonce;
+    let payload_size = 5;
 
     // Send message to L1 Contract
     send_message_to_l1(
