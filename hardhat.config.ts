@@ -25,3 +25,5 @@ const config: HardhatUserConfig = {
       network: 'starknetLocal',
     },
   };
+
+  export default config;

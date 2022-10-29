@@ -1,7 +1,7 @@
 {
   "scripts": {
   "compile:l1": "hardhat compile",
-  "compile:l2": "hardhat starknet-compile hardhat starknet-compile ./contracts/starknet/**/",
+  "compile:l2": "hardhat starknet-compile ./contracts/starknet/*",
   "compile": "yarn compile:l1 && yarn compile:l2",
   "test:l2": "yarn hardhat test --network 'ethereumLocal' --starknet-network 'starknetLocal'"
   },
