@@ -29,20 +29,35 @@ contract Hub {
         uint256 amount;
         address to_address;
         address l1_failsafe_address;
-        bool executed;
+        bool pending; // non created operations are false, created but not claimed/executed are true, executed are false
     }
 
-    mapping (uint => BridgeOperation[]) Map;
+    mapping (uint256 => BridgeOperation) public operations;
     
-    function depositTo_zkSync(address _l2Receiver, uint256 _amount) public {
-        L1BridgeInterface bridgeContract = L1BridgeInterface(zkSyncContract);
+    function depositTo_zkSync(address _l2Receiver, uint256 _amount, uint256 _nonce) public {
+        // make sure the bridge operation exists / has not been executed
+        require(operations[_nonce].pending = true);
 
         // update the accounting
+        operations[_nonce].pending = false;
+
         // call the `deposit` fucntion on the zkSync smart contract
+        L1BridgeInterface bridgeContract = L1BridgeInterface(zkSyncContract);
         bridgeContract.deposit(_l2Receiver, l1TokenETH, _amount);
     }
 
-    function claimFailsafe(nonce) public {
+    function claimFailsafe(uint256 _nonce) public {
+        // assert that caller is the failsafe address
+        require(msg.sender == operations[_nonce].l1_failsafe_address);
+        // make sure the bridge operation exists / has not been executed
+        require(operations[_nonce].pending = true);
+
+        // update the accounting
+        operations[_nonce].pending = false;
+
+        // transfer
+        address failsafe_address = operations[_nonce].l1_failsafe_address;
+        payable(failsafe_address).transfer(operations[_nonce].amount);
 
     }
 }
