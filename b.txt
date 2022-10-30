@@ -1,0 +1,41 @@
+Error in the called contract (0x644d569ea3dc8e62d4eed6191561dfc4943ad3e0533e04bf06372ffa1150533):
+Error at pc=0:10:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:214)
+Unknown location (pc=0:195)
+Unknown location (pc=0:150)
+
+Error in the called contract (0x73314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82):
+Error at pc=0:104:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:1678)
+Unknown location (pc=0:1664)
+
+Error in the called contract (0x73314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82):
+Error at pc=0:87:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:811)
+Unknown location (pc=0:762)
+Unknown location (pc=0:162)
+
+Error in the called contract (0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7):
+Error at pc=0:104:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:1678)
+Unknown location (pc=0:1664)
+
+Error in the called contract (0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7):
+Error at pc=0:9:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:1705)
+Unknown location (pc=0:1693)
+Unknown location (pc=0:1018)
+
+Traceback (most recent call last):
+  File "<hint32>", line 3, in <module>
+AssertionError: assert_not_zero failed: 0 = 0.

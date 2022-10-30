@@ -7,7 +7,7 @@ from starkware.cairo.common.uint256 import Uint256
 
 from starkware.cairo.common.alloc import alloc
 from starkware.starknet.common.messages import send_message_to_l1
-from starkware.starknet.common.syscalls import get_caller_address, call_contract
+from starkware.starknet.common.syscalls import get_caller_address, call_contract, get_contract_address
 
 // contrat qui choppe ETH, addr withdraw l1, addr withdraw l2 (peut-etre fee mais on regarde pas)
 // forward to l1 l'eth
@@ -38,12 +38,17 @@ func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
 func send_eth{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(amount: Uint256) {
     let (hub) = hub_address.read();
 
+    let (caller) = get_caller_address();
+    let (this) = get_contract_address();
+
     let calldata: felt* = alloc();
 
     assert calldata[0] = hub;
-    assert calldata[2] = amount.low;
-    assert calldata[3] = amount.high;
+    assert calldata[1] = amount.low;
+    assert calldata[2] = amount.high;
     let calldata_size = 3;
+
+    IERC20.transferFrom(ETH_CONTRACT, caller, this, amount);
 
     call_contract(
         contract_address=STARKGATE_BRIDGE,

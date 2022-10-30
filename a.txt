@@ -1,0 +1,25 @@
+Error in the called contract (0x69f5289e6dfabcf977f15e37049de7b59dc367a2f9a3fa54d71fd9669cd12d1):
+Error at pc=0:10:
+Got an exception while executing a hint.
+Cairo traceback (most recent call last):
+Unknown location (pc=0:214)
+Unknown location (pc=0:195)
+Unknown location (pc=0:150)
+
+Traceback (most recent call last):
+  File "<hint1>", line 1, in <module>
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/starknet/core/os/syscall_utils.py", line 221, in call_contract
+    self._call_contract_and_write_response(
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/starknet/core/os/syscall_utils.py", line 500, in _call_contract_and_write_response
+    retdata = self._call_contract(
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/starknet/core/os/syscall_utils.py", line 673, in _call_contract
+    calldata = segments.memory.get_range_as_ints(
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/cairo/lang/vm/memory_dict.py", line 237, in get_range_as_ints
+    mem_range = self.get_range(addr=addr, size=size)
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/cairo/lang/vm/memory_dict.py", line 231, in get_range
+    return [self[addr + i] for i in range(size)]
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/cairo/lang/vm/memory_dict.py", line 231, in <listcomp>
+    return [self[addr + i] for i in range(size)]
+  File "/app/src/starkware/starknet/services/feeder_gateway/starknet_feeder_gateway_venv-site/starkware/cairo/lang/vm/memory_dict.py", line 185, in __getitem__
+    raise UnknownMemoryError(addr) from None
+starkware.cairo.lang.vm.memory_dict.UnknownMemoryError: Unknown value for memory cell at address 13:1.
