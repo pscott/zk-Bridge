@@ -36,23 +36,23 @@ export default function Home() {
           <div className={styles.skalala}>
             From
             <br />
-            <p>{address}</p>
+            <p>{toZkSync ? address : getZkSyncAddress}</p>
             <div className={styles.centered}>
               <div className={styles.round}>
-                <img className={styles.troll} src="switch.png" alt="switch" />
+                <img className={styles.troll} src="switch.png" alt="switch" onClick={() => toggleToZkSync(!toZkSync)} />
               </div>
             </div>
             <br />
             To
             <br />
-            <input type="text" value={getZkSyncAddress}
+            <input type="text" value={toZkSync ? getZkSyncAddress : address}
               placeholder="To..." />
           </div>
           <div className={styles.skalala}>
             Amount
             <input type="number" placeholder="0.00" onChange={event => setAmount(event.target.value)} />
           </div>
-          <Submit getAmount={getAmount} getZkSyncAddress={getZkSyncAddress} />
+          <Submit getAmount={getAmount} toZkSync={toZkSync} getZkSyncAddress={getZkSyncAddress} />
         </div>
       </main>
 

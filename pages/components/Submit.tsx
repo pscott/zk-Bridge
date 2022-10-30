@@ -1,6 +1,6 @@
 import { useAccount, useStarknetExecute } from '@starknet-react/core'
 
-function Component(getAmount: any, getZkSyncAddress: any) {
+function Component(getAmount: any, getZkSyncAddress: any, toZkSync: any) {
 
     const { address } = useAccount();
 
@@ -56,6 +56,13 @@ function Component(getAmount: any, getZkSyncAddress: any) {
             </>)
     }
 
+    if (!toZkSync) {
+        <>
+            <p>
+                <button onClick={() => execute()}>Send {getAmount} ETH to {getZkSyncAddress}</button>
+            </p>
+        </>
+    }
     return (
         <>
             <p>
@@ -65,6 +72,6 @@ function Component(getAmount: any, getZkSyncAddress: any) {
     )
 }
 
-export default function Submit({ getAmount, getZkSyncAddress }: { getAmount: any, getZkSyncAddress: any }) {
-    return Component(getAmount, getZkSyncAddress)
+export default function Submit({ getAmount, getZkSyncAddress, toZkSync }: { getAmount: any, getZkSyncAddress: any, toZkSync: any }) {
+    return Component(getAmount, getZkSyncAddress, toZkSync)
 }
