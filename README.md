@@ -1,5 +1,10 @@
 # zk-Bridge
 
+## Frontend
+
+All fronted related informations are in [this folder](./frontend/).  
+For more informations, please refer to [this file](./frontend/README.md).  
+
 ## Install
 
 `yarn install`
