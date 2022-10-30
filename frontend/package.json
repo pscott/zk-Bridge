@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next start",
-    "lint": "next lint"
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@starknet-react/core": "^0.14.5",
