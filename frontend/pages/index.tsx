@@ -4,12 +4,13 @@ import ConnectStarkWallet from './components/ConnectStarkWallet'
 import ConnectZkSyncWallet from './components/ConnectZkSyncWallet'
 import Submit from './components/Submit'
 import { useState } from "react";
+import { useAccount } from '@starknet-react/core'
 
 export default function Home() {
-  const [getStarkAddress, setStarkAddress] = useState('')
   const [getZkSyncAddress, setZkSyncAddress] = useState('')
   const [toZkSync, toggleToZkSync] = useState(true)
   const [getAmount, setAmount] = useState('')
+  const { address } = useAccount()
 
   return (
     <div className={styles.container}>
@@ -22,7 +23,7 @@ export default function Home() {
         <ul>
           <li><img src="logo.png" alt="Logo" /></li>
           <span>
-            <ConnectStarkWallet setStarkAddress={setStarkAddress} />
+            <ConnectStarkWallet />
             <ConnectZkSyncWallet getZkSyncAddress={getZkSyncAddress} setZkSyncAddress={setZkSyncAddress} />
           </span>
         </ul>
@@ -35,7 +36,7 @@ export default function Home() {
           <div className={styles.skalala}>
             From
             <br />
-            <p>{getStarkAddress}</p>
+            <p>{address}</p>
             <div className={styles.centered}>
               <div className={styles.round}>
                 <img className={styles.troll} src="switch.png" alt="switch" />

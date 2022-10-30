@@ -1,6 +1,10 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/components/ConnectStarkWallet": "pages/components/ConnectStarkWallet.html",
+  "/components/ConnectZkSyncWallet": "pages/components/ConnectZkSyncWallet.html",
+  "/components/Submit": "pages/components/Submit.html",
+  "/": "pages/index.html",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/404": "pages/404.html"
 }

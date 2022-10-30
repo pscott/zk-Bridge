@@ -1,11 +1,11 @@
-function buttonString(addr) {
+function buttonString(addr: any) {
     if (addr) {
         return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
     }
     return "Connect Metamask    "
 }
 
-const test = async (setZkSyncAddress) => {
+const test = async (setZkSyncAddress: any) => {
     // Check if MetaMask is installed on user's browser
     if (!window.ethereum) {
         alert("Please install Metamask");
@@ -21,7 +21,7 @@ const test = async (setZkSyncAddress) => {
     }
 
 }
-export default function ConnectZkSyncWallet({ getZkSyncAddress, setZkSyncAddress }) {
+export default function ConnectZkSyncWallet({ getZkSyncAddress, setZkSyncAddress }: { getZkSyncAddress: any, setZkSyncAddress: any }) {
     return (
         <>
             <li>

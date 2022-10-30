@@ -1,15 +1,14 @@
 import { useAccount, useStarknetExecute } from '@starknet-react/core'
-import { useState, useMemo, useCallback } from 'react'
 
-function Component(getAmount, getZkSyncAddress) {
+function Component(getAmount: any, getZkSyncAddress: any) {
 
-    const { address, status } = useAccount();
+    const { address } = useAccount();
 
     const ethContractAddress = "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7";
     const starknetContractAddress = "0x021ef10f3577727483c51c2fd833cce557b1aa85f2ed6cb58c491ae0d48bf401";
     const calls = [
         {
-            contractAddress: starknetContractAddress,
+            contractAddress: ethContractAddress,
             entrypoint: 'approve',
             calldata:
                 [starknetContractAddress,
@@ -60,12 +59,12 @@ function Component(getAmount, getZkSyncAddress) {
     return (
         <>
             <p>
-                <button onClick={execute}>Send {getAmount} ETH to {getZkSyncAddress}</button>
+                <button onClick={() => execute()}>Send {getAmount} ETH to {getZkSyncAddress}</button>
             </p>
         </>
     )
 }
 
-export default function Submit({ getAmount, getZkSyncAddress }) {
+export default function Submit({ getAmount, getZkSyncAddress }: { getAmount: any, getZkSyncAddress: any }) {
     return Component(getAmount, getZkSyncAddress)
 }

@@ -191,11 +191,12 @@
   display: block;
   transform: rotate(90deg);
   padding: 20px;
-  transition: transform 500ms ease-in-out;
+  transition: transform 400ms ease-in-out;
 }
 
 .troll:hover {
   transform: rotate(270deg);
+  cursor: pointer;
 }
 
 .centered {
