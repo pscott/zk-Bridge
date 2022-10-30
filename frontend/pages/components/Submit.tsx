@@ -5,17 +5,19 @@ function Component(getAmount, getZkSyncAddress) {
 
     const { address, status } = useAccount();
 
+    const starknetContractAddress = "0x021ef10f3577727483c51c2fd833cce557b1aa85f2ed6cb58c491ae0d48bf401";
+    const ethContractAddress = "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7";
     const calls = [
         {
-            contractAddress: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+            contractAddress: ethContractAddress,
             entrypoint: 'approve',
             calldata:
-                ['0x0197c83b5605d32574286820a41d346dd253b508bf59d36dc72123ec29bea93f',
+                [starknetContractAddress,
                     (Number(getAmount) * 1_000_000_000_000_000_000),
                     0],
         },
         {
-            contractAddress: '0x0197c83b5605d32574286820a41d346dd253b508bf59d36dc72123ec29bea93f',
+            contractAddress: starknetContractAddress,
             entrypoint: 'bridge_to',
             calldata:
                 [(Number(getAmount) * 1_000_000_000_000_000_000),
