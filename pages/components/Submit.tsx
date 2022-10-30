@@ -5,7 +5,7 @@ function Component(getAmount: any, getZkSyncAddress: any) {
     const { address } = useAccount();
 
     const ethContractAddress = "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7";
-    const starknetContractAddress = "0x021ef10f3577727483c51c2fd833cce557b1aa85f2ed6cb58c491ae0d48bf401";
+    const starknetContractAddress = "0x063034ff00945bcfd734e7258d8c3bb6c8696dd90c8e5555a608050ceec1306a";
     const calls = [
         {
             contractAddress: ethContractAddress,
