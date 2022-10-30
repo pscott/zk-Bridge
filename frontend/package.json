@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "DISABLE_ESLINT_PLUGIN=true next dev",
+    "build": "DISABLE_ESLINT_PLUGIN=true next build",
+    "start": "DISABLE_ESLINT_PLUGIN=true next start",
     "lint": "next lint"
   },
   "dependencies": {
