@@ -34,7 +34,7 @@ export default function Home() {
             Welcome to <span className={styles.underline}>zkBridge!</span>
           </h1>
           <div className={styles.skalala}>
-            From
+            From {toZkSync ? "StarkNet" : "zkSync"}
             <br />
             <p>{toZkSync ? address : getZkSyncAddress}</p>
             <div className={styles.centered}>
@@ -43,7 +43,7 @@ export default function Home() {
               </div>
             </div>
             <br />
-            To
+            To {toZkSync ? "zkSync" : "StarkNet"}
             <br />
             <input type="text" value={toZkSync ? getZkSyncAddress : address}
               placeholder="To..." />
